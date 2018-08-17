@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { ProjetoRoutingModule } from './projeto-routing.module';
 import { ProjetoComponent } from './projeto.component';
 import { MatListModule, MatButtonModule, MatIconModule } from '../../../node_modules/@angular/material';
+import { ViewProjetoComponent } from './view-projeto/view-projeto.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { MatListModule, MatButtonModule, MatIconModule } from '../../../node_mod
     MatIconModule,
     FlexLayoutModule
   ],
-  declarations: [ProjetoComponent]
+  declarations: [ProjetoComponent, ViewProjetoComponent]
 })
 export class ProjetoModule { }

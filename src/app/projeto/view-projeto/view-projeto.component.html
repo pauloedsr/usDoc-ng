@@ -1,0 +1,8 @@
+<h2>{{viewProjeto?.projeto?.nome}}</h2>
+
+<mat-nav-list>
+  <mat-list-item *ngFor="let us of viewProjeto?.userStories" [routerLink]="'/us/view/'+ us._id">
+      US{{us.numero}} - {{us.nome}}
+    <mat-divider></mat-divider>
+  </mat-list-item>
+</mat-nav-list>

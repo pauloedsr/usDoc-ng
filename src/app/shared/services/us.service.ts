@@ -1,4 +1,4 @@
-import { ProjetosRestI } from './../us-doc.ed';
+import { ProjetosRestI, ViewProjetoRestI } from './../us-doc.ed';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -15,6 +15,15 @@ export class UsService {
     return Observable.create(observer => {
       const autor = localStorage.getItem('id');
       this.http.get(`${SERVER_URL}/projeto/list/${autor}`).subscribe((data: ProjetosRestI[]) => {
+        observer.next(data);
+      });
+    });
+  }
+
+  viewProjeto(id: string): Observable<ViewProjetoRestI> {
+    return Observable.create(observer => {
+      const autor = localStorage.getItem('id');
+      this.http.get(`${SERVER_URL}/projeto/view/${id}`).subscribe((data: ViewProjetoRestI) => {
         observer.next(data);
       });
     });
