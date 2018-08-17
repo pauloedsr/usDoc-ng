@@ -1,0 +1,35 @@
+<div id="navsidebar">
+    <mat-nav-list>
+        <a mat-list-item *ngFor="let menu of menuItens" [ngClass]="isNavAtiva(menu.tipo) ? 'nav-active' : ''" (click)="navSideBar(menu.tipo)" >
+            <mat-icon class="sidenav-icon">{{menu.icon}}</mat-icon>
+        </a>
+    </mat-nav-list>
+</div>
+
+
+<div *ngFor="let menu of menuItens" id="sidebar" [hidden]="!isNavAtiva(menu.tipo)">
+    <mat-nav-list>
+        <h3 matSubheader class="title">
+           {{menu.nome}}
+        </h3>
+        <ng-template ngFor let-item [ngForOf]="menu.itens">
+
+            <a *ngIf="item.route" mat-list-item [routerLinkActive]="'active'" [routerLink]="item.route">
+                <mat-icon class="sidenav-icon">{{item.icon}}</mat-icon> {{item.label}}
+            </a>
+
+            <mat-accordion *ngIf="!item.route">
+                <mat-expansion-panel [expanded]="isSubMenuAtivo(item.tipo)">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title><mat-icon class="sidenav-icon">{{item.icon}}</mat-icon> {{item.label}}</mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div *ngIf="item.submenu" [id]="item.tipo">
+                        <a *ngFor="let subitem of item.submenu" mat-list-item [routerLinkActive]="'active'" [routerLink]="subitem.route">
+                            <mat-icon class="sidenav-icon">{{subitem.icon}}</mat-icon> {{subitem.label}}
+                        </a>
+                    </div>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </ng-template>
+    </mat-nav-list>
+</div>
