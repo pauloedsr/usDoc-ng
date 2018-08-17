@@ -1,3 +1,4 @@
+import { ProjetosRestI } from './../shared/us-doc.ed';
 import { UsService } from './../shared/services/us.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -10,9 +11,11 @@ export class ProjetoComponent implements OnInit {
 
   constructor(private usService: UsService) { }
 
+  public projetos: ProjetosRestI[];
+
   ngOnInit() {
-    this.usService.getProjetos().subscribe(a => {
-      console.log(a);
+    this.usService.getProjetos().subscribe(data => {
+      this.projetos = data;
     });
   }
 

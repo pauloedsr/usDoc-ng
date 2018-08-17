@@ -58,16 +58,13 @@ export class SidebarComponent implements OnInit {
             })[0];
             return itemAtivado;
         });
-        this.navAtiva = (menuItem && menuItem.length > 0) ? menuItem[0].tipo : ModuloEnum.GESTAO_TUA_ESCOLA;
+        this.navAtiva = (menuItem && menuItem.length > 0) ? menuItem[0].tipo : ModuloEnum.US_DOCS;
     }
 }
 
 export enum ModuloEnum {
-    GESTAO_TUA_ESCOLA = 'GESTAO_TUA_ESCOLA',
-    SB_ADMIN = 'SB_ADMIN',
-    TESTE = 'TESTE',
-    SUB_MENU_TESTE = 'SUB_MENU_TESTE',
-    SUB_MENU_TESTE2 = 'SUB_MENU_TESTE2',
+    US_DOCS = 'US_DOCS',
+    SB_ADMIN = 'SB_ADMIN'
 }
 
 /**
@@ -78,43 +75,30 @@ export class MenuItens {
 
     constructor() {
         this.itens.push({
-            tipo: ModuloEnum.GESTAO_TUA_ESCOLA,
-            nome: 'Modulo 1',
-            icon: 'school',
+            tipo: ModuloEnum.US_DOCS,
+            nome: 'Projetos',
+            icon: 'library_books',
             itens: [
-                {route: '/dashboard', label: 'Dashboard', icon: 'input'},
-                {label: 'Menu', icon: 'add', tipo: ModuloEnum.SUB_MENU_TESTE, submenu: [
-                    {label: 'Blank Page', icon: 'home', route: '/blank-page'},
-                ]},
+                {route: '/projetos', label: 'Meus Projetos', icon: 'arrow_right'},
             ]
         });
 
-        this.itens.push({
-            tipo: ModuloEnum.SB_ADMIN,
-            nome: 'Examples',
-            icon: 'help_outline',
-            itens: [
-                {route: '/dashboard', label: 'Dashboard', icon: 'dashboard'},
-                {route: '/charts', label: 'Charts', icon: 'bar_chart'},
-                {route: '/tables', label: 'Tables', icon: 'table_chart'},
-                {route: '/forms', label: 'Forms', icon: 'input'},
-                {label: 'Material', icon: 'add', tipo: ModuloEnum.SUB_MENU_TESTE2, submenu: [
-                    {route: '/grid', label: 'Material Grid', icon: 'grid_on'},
-                    {route: '/components', label: 'Material Component', icon: 'code'},
-                ]},
-            ],
-        });
+        // this.itens.push({
+        //     tipo: ModuloEnum.SB_ADMIN,
+        //     nome: 'Examples',
+        //     icon: 'help_outline',
+        //     itens: [
+        //         {route: '/dashboard', label: 'Dashboard', icon: 'dashboard'},
+        //         {route: '/charts', label: 'Charts', icon: 'bar_chart'},
+        //         {route: '/tables', label: 'Tables', icon: 'table_chart'},
+        //         {route: '/forms', label: 'Forms', icon: 'input'},
+        //         {label: 'Material', icon: 'add', tipo: ModuloEnum.SUB_MENU_TESTE2, submenu: [
+        //             {route: '/grid', label: 'Material Grid', icon: 'grid_on'},
+        //             {route: '/components', label: 'Material Component', icon: 'code'},
+        //         ]},
+        //     ],
+        // });
 
-        this.itens.push({
-            tipo: ModuloEnum.TESTE,
-            nome: 'Teste Módulo',
-            icon: 'archive',
-            itens: [
-                {route: '/dashboard0', label: 'Controle Acesso', icon: 'assignment_ind'},
-                {route: '/dashboard1', label: 'Situações', icon: 'chrome_reader_mode'},
-                {route: '/dashboard2', label: 'Opções de Teste', icon: 'build'},
-            ]
-        });
 
     }
 }

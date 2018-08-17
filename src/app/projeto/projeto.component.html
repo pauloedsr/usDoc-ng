@@ -1,3 +1,13 @@
-<p>
-  projeto works!
-</p>
+<h2>Meus Projetos</h2>
+
+<div fxFlex fxLayoutAlign="end">
+  <button mat-raised-button> <mat-icon>add</mat-icon> Novo </button>
+</div>
+
+
+<mat-nav-list>
+  <mat-list-item *ngFor="let projeto of projetos" >
+    {{projeto.nome}}
+    <mat-divider></mat-divider>
+  </mat-list-item>
+</mat-nav-list>
