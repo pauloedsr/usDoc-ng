@@ -1,3 +1,17 @@
-<p>
-  user-stories works!
-</p>
+<div *ngIf="userStorieRestI">
+  <h2>US{{userStorieRestI.userStorie.numero}} -  {{userStorieRestI.userStorie.nome}} </h2>
+
+  <p>{{userStorieRestI.userStorie.descricao}}</p>
+
+  <h3>Pré-condições</h3>
+  <ul>
+    <li *ngFor="let item of userStorieRestI.userStorie.preCondicoes">
+      {{item.numero}} - {{item.descricao}}
+    </li>
+  </ul>
+
+  <h3>Condições</h3>
+    <p *ngFor="let item of userStorieRestI.userStorie.condicoes">
+      {{item.numero}} - {{item.descricao}}
+    </p>
+</div>

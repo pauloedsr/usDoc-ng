@@ -44,6 +44,10 @@ const routes: Routes = [
             {
                 path: 'projetos',
                 loadChildren: '../projeto/projeto.module#ProjetoModule'
+            },
+            {
+                path: 'us',
+                loadChildren: '../user-stories/user-stories.module#UserStoriesModule'
             }
         ]
     }

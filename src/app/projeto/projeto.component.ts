@@ -1,4 +1,4 @@
-import { ProjetosRestI } from './../shared/us-doc.ed';
+import { ProjetosRestI, UserStorieRestI } from './../shared/us-doc.ed';
 import { UsService } from './../shared/services/us.service';
 import { Component, OnInit } from '@angular/core';
 

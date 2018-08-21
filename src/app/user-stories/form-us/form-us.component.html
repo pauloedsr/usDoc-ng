@@ -1,0 +1,44 @@
+<div>
+  <h2 *ngIf="isNovo" >Criar US</h2>
+  <h2 *ngIf="!isNovo" >Editar US</h2>
+
+  <form [formGroup]="formUs">
+    <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="20px">
+      <mat-form-field appearance="outline" fxFlex="20">
+        <mat-label>Número</mat-label>
+        <input matInput type="number" formControlName="inNumero" autocomplete="off" style="font-size: x-large">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" fxFlex>
+        <mat-label>Nome</mat-label>
+        <input matInput type="text" formControlName="inNome" autocomplete="off" style="font-size: x-large">
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="20px">
+      <mat-form-field appearance="outline" fxFlex>
+          <mat-label>Descrição</mat-label>
+          <textarea matInput formControlName="inDescricao" placeholder="Descreva US" rows="5"></textarea>
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px">
+      <p>Pré-condições</p>
+      <button mat-stroked-button (click)="addPre()" type="button">Adicionar</button>
+    </div>
+    <div fxFlexFill fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="10px" formArrayName="preCondicoes" 
+      *ngFor="let itemPre of formUs.get('preCondicoes').controls; let i = index" >
+      <div fxFlexFill fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="10px" [formGroupName]="i">
+          <mat-form-field appearance="outline" fxFlex="15">
+              <mat-label>Número</mat-label>
+              <input matInput type="number" formControlName="inNroPre" autocomplete="off">
+            </mat-form-field>
+      
+            <mat-form-field appearance="outline" fxFlex>
+              <mat-label>Descrição</mat-label>
+              <textarea matInput type="text" formControlName="inNomePre" rows="1"></textarea>
+            </mat-form-field>
+      </div>
+    </div>
+  </form>
+</div>

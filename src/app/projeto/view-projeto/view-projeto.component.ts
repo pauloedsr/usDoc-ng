@@ -1,3 +1,4 @@
+import { UserStorieRestI } from './../../shared/us-doc.ed';
 import { UsService } from './../../shared/services/us.service';
 import { Component, OnInit } from '@angular/core';
 import { ViewProjetoRestI } from '../../shared/us-doc.ed';

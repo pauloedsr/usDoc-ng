@@ -1,7 +1,13 @@
 <h2>{{viewProjeto?.projeto?.nome}}</h2>
 
+<p>{{viewProjeto?.projeto?.descricao}}</p>
+
+<div fxFlex>
+  <button mat-raised-button color="accent" [routerLink]="['/us/create', viewProjeto?.projeto._id]" > <mat-icon>add</mat-icon> Criar US </button>
+</div>
+
 <mat-nav-list>
-  <mat-list-item *ngFor="let us of viewProjeto?.userStories" [routerLink]="'/us/view/'+ us._id">
+  <mat-list-item *ngFor="let us of viewProjeto?.userStories" [routerLink]="['/us/view/', us._id]">
       US{{us.numero}} - {{us.nome}}
     <mat-divider></mat-divider>
   </mat-list-item>
