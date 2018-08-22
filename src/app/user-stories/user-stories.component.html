@@ -1,4 +1,7 @@
 <div *ngIf="userStorieRestI">
+  <div fxLayout="row" fxLayoutAlign="end center">
+    <button mat-raised-button color="accent" [routerLink]="['/us/edit', userStorieRestI.userStorie._id]" >Editar</button>
+  </div>
   <h2>US{{userStorieRestI.userStorie.numero}} -  {{userStorieRestI.userStorie.nome}} </h2>
 
   <p>{{userStorieRestI.userStorie.descricao}}</p>

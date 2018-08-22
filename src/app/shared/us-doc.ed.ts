@@ -10,22 +10,8 @@ export interface ProjetosRestI {
 
 export interface ViewProjetoRestI {
     projeto: ProjetosRestI;
-    userStories: UserStoryI[];
+    userStories: UserStorieI[];
 }
-
-export interface UserStoryI {
-    _id: string;
-    updatedAt: string;
-    createdAt: string;
-    descricao: string;
-    autor: string;
-    projeto: string;
-    numero: number;
-    nome: string;
-    __v: number;
-    condicoes: CondicoesI[];
-    preCondicoes: CondicoesI[];
-  }
 
 export interface CondicoesI {
     numero: number;
