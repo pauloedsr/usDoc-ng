@@ -1,4 +1,4 @@
-import { ProjetosRestI, ViewProjetoRestI, UserStorieRestI, UserStorieI } from './../us-doc.ed';
+import { ProjetosRestI, ViewProjetoRestI, UserStorieRestI, UserStorieI, ProjetoI } from './../us-doc.ed';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -45,6 +45,22 @@ export class UsService {
   }
 
   putUs(us: UserStorieI): Observable<UserStorieI> {
+    return Observable.create(observer => {
+      this.http.put(`${SERVER_URL}/us`, us).subscribe((data: UserStorieI) => {
+        observer.next(data);
+      });
+    });
+  }
+  
+  postProjeto(projeto: ProjetoI): Observable<UserStorieI> {
+    return Observable.create(observer => {
+      this.http.post(`${SERVER_URL}/projeto`, projeto).subscribe((data: ProjetoI) => {
+        observer.next(data);
+      });
+    });
+  }
+
+  putProjeto(us: UserStorieI): Observable<UserStorieI> {
     return Observable.create(observer => {
       this.http.put(`${SERVER_URL}/us`, us).subscribe((data: UserStorieI) => {
         observer.next(data);
