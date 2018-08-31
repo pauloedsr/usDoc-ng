@@ -22,12 +22,18 @@
     <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="20px">
       <mat-form-field appearance="outline" fxFlex>
           <mat-label>Descrição</mat-label>
-          <textarea matInput formControlName="descricao" placeholder="Descrever US" rows="5"></textarea>
+          <textarea matInput type="text" 
+                #autosize="cdkTextareaAutosize" 
+                cdkTextareaAutosize 
+                cdkAutosizeMinRows="5"
+                cdkAutosizeMaxRows="8"
+                placeholder="Descrever US"
+                formControlName="descricao"></textarea>
       </mat-form-field>
     </div>
 
     <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px">
-      <p>Pré-condições</p>
+      <p fxFlex="100px">Pré-condições</p>
       <button mat-stroked-button (click)="adicionarItem('preCondicoes')" type="button" color="accent">Adicionar</button>
     </div>
     <div fxFlexFill fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="10px" formArrayName="preCondicoes" 
@@ -40,17 +46,26 @@
       
             <mat-form-field appearance="outline" fxFlex>
               <mat-label>Descrição</mat-label>
-              <textarea matInput type="text" formControlName="descricao" rows="1"></textarea>
+              <textarea matInput type="text" 
+                #autosize="cdkTextareaAutosize" 
+                cdkTextareaAutosize 
+                cdkAutosizeMinRows="2"
+                cdkAutosizeMaxRows="5"
+                formControlName="descricao"></textarea>
             </mat-form-field>
+
+            <button mat-icon-button color="warn" (click)="removerItem('preCondicoes', i)">
+              <mat-icon>close</mat-icon>
+            </button>
       </div>
     </div>
 
     <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px">
-      <p>Condições</p>
-      <button mat-stroked-button (click)="adicionarItem('condicoes')" type="button" color="accent">Adicionar</button>
+      <p fxFlex="100px">Condições</p>
+      <button mat-stroked-button (click)="adicionarItem('criterios')" type="button" color="accent">Adicionar</button>
     </div>
-    <div fxFlexFill fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="10px" formArrayName="condicoes" 
-      *ngFor="let itemPre of getFormArray('condicoes').controls; let i = index" >
+    <div fxFlexFill fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="10px" formArrayName="criterios" 
+      *ngFor="let itemPre of getFormArray('criterios').controls; let i = index" >
       <div fxFlexFill fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="10px" [formGroupName]="i">
           <mat-form-field appearance="outline" fxFlex="80px">
               <mat-label>Número</mat-label>
@@ -59,8 +74,17 @@
       
             <mat-form-field appearance="outline" fxFlex>
               <mat-label>Descrição</mat-label>
-              <textarea matInput type="text" formControlName="descricao" rows="1"></textarea>
+              <textarea matInput type="text" 
+                #autosize="cdkTextareaAutosize" 
+                cdkTextareaAutosize 
+                cdkAutosizeMinRows="2"
+                cdkAutosizeMaxRows="5"
+                formControlName="descricao"></textarea>
             </mat-form-field>
+
+            <button mat-icon-button color="warn" (click)="removerItem('criterios', i)">
+              <mat-icon>close</mat-icon>
+            </button>
       </div>
     </div>
   </form>

@@ -44,7 +44,7 @@ export interface UserStorieI {
     numero: number;
     nome: string;
     __v: number;
-    condicoes: CondicoesI[];
+    criterios: CondicoesI[];
     preCondicoes: CondicoesI[];
 }
 
