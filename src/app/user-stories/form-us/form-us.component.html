@@ -5,9 +5,9 @@
   
   <form [formGroup]="formUs">
     <div style="margin-bottom: 20px">
-      <button mat-raised-button color="primary" (click)="formUs.valid ? salvar() : true">Salvar</button>
-      <button mat-raised-button *ngIf="!isNovo" [routerLink]="[ '/us/view', idUs ]">Cancelar</button>
-      <button mat-raised-button *ngIf="isNovo" [routerLink]="[ '/projetos/view', idProjeto ]">Cancelar</button>
+      <button mat-flat-button color="primary" (click)="formUs.valid ? salvar() : true">Salvar</button>
+      <button mat-flat-button color="accent" *ngIf="!isNovo" [routerLink]="[ '/us/view', idUs ]">Cancelar</button>
+      <button mat-flat-button color="accent" *ngIf="isNovo" [routerLink]="[ '/projetos/view', idProjeto ]">Cancelar</button>
     </div>
     <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="20px">
       <mat-form-field appearance="outline" fxFlex="100px">
