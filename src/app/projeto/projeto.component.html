@@ -1,11 +1,11 @@
 <h2>Meus Projetos</h2>
 
 <div fxFlex fxLayoutAlign="end">
-  <button mat-raised-button color="primary"> <mat-icon>add</mat-icon> Novo </button>
+  <button mat-raised-button color="primary" [routerLink]="['/projetos/create']"> <mat-icon>add</mat-icon> Novo </button>
 </div>
 
 <mat-nav-list>
-  <mat-list-item *ngFor="let projeto of projetos" [routerLink]="'/projetos/view/'+ projeto._id" >
+  <mat-list-item *ngFor="let projeto of projetos" [routerLink]="['/projetos/view', projeto._id]" >
     {{projeto.nome}}
     <mat-divider></mat-divider>
   </mat-list-item>

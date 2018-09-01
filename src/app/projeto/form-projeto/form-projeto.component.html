@@ -1,3 +1,29 @@
-<p>
-  form-projeto works!
-</p>
+<div>
+  <h2 *ngIf="isNovo" >Criar Projeto</h2>
+  <h2 *ngIf="!isNovo" >Editar Projeto</h2>
+
+  <form [formGroup]="formProjeto">
+    <div style="margin-bottom: 20px">
+      <button mat-raised-button color="primary" (click)="formProjeto.valid ? salvar() : true">Salvar</button>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="20px">
+      <mat-form-field appearance="outline" fxFlex>
+        <mat-label>Nome</mat-label>
+        <input matInput type="text" formControlName="nome" autocomplete="off" style="font-size: x-large">
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="20px">
+      <mat-form-field appearance="outline" fxFlex>
+          <mat-label>Descrição</mat-label>
+          <textarea matInput type="text" 
+                #autosize="cdkTextareaAutosize" 
+                cdkTextareaAutosize 
+                cdkAutosizeMinRows="5"
+                cdkAutosizeMaxRows="15"
+                placeholder="Descrever US"
+                formControlName="descricao"></textarea>
+      </mat-form-field>
+    </div>
+  </form>
+</div>

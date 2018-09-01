@@ -52,3 +52,8 @@ export interface CondicoesI {
     numero: number;
     descricao: string;
 }
+
+export interface SuccessI {
+    success: boolean;
+    obj: any;
+}

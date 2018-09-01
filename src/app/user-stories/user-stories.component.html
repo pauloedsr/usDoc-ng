@@ -1,6 +1,7 @@
 <div *ngIf="userStorieRestI">
   <div fxLayout="row" fxLayoutAlign="end center">
     <button mat-raised-button color="accent" [routerLink]="['/us/edit', userStorieRestI.userStorie._id]" >Editar</button>
+    <button mat-raised-button color="warn" (click)="delete()" >Excluir</button>
   </div>
   <h2>US{{userStorieRestI.userStorie.numero}} -  {{userStorieRestI.userStorie.nome}} </h2>
 

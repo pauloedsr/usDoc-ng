@@ -1,4 +1,4 @@
-import { ProjetosRestI, ViewProjetoRestI, UserStorieRestI, UserStorieI, ProjetoI } from './../us-doc.ed';
+import { ProjetosRestI, ViewProjetoRestI, UserStorieRestI, UserStorieI, ProjetoI, SuccessI } from './../us-doc.ed';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -36,6 +36,14 @@ export class UsService {
     });
   }
 
+  deleteUS(id: string): Observable<UserStorieRestI> {
+    return Observable.create(observer => {
+      this.http.delete(`${SERVER_URL}/us/${id}`).subscribe((data: SuccessI) => {
+        observer.next(data);
+      });
+    });
+  }
+
   postUs(us: UserStorieI): Observable<UserStorieI> {
     return Observable.create(observer => {
       this.http.post(`${SERVER_URL}/us`, us).subscribe((data: UserStorieI) => {
@@ -52,17 +60,17 @@ export class UsService {
     });
   }
   
-  postProjeto(projeto: ProjetoI): Observable<UserStorieI> {
+  postProjeto(projeto: ProjetosRestI): Observable<ProjetosRestI> {
     return Observable.create(observer => {
-      this.http.post(`${SERVER_URL}/projeto`, projeto).subscribe((data: ProjetoI) => {
+      this.http.post(`${SERVER_URL}/projeto`, projeto).subscribe((data: ProjetosRestI) => {
         observer.next(data);
       });
     });
   }
 
-  putProjeto(us: UserStorieI): Observable<UserStorieI> {
+  putProjeto(projeto: ProjetosRestI): Observable<ProjetosRestI> {
     return Observable.create(observer => {
-      this.http.put(`${SERVER_URL}/us`, us).subscribe((data: UserStorieI) => {
+      this.http.put(`${SERVER_URL}/projeto`, projeto).subscribe((data: ProjetosRestI) => {
         observer.next(data);
       });
     });

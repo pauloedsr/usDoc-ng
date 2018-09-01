@@ -3,7 +3,8 @@
 <p>{{viewProjeto?.projeto?.descricao}}</p>
 
 <div fxFlex>
-  <button mat-raised-button color="accent" [routerLink]="['/us/create', viewProjeto?.projeto._id]" > <mat-icon>add</mat-icon> Criar US </button>
+  <button mat-raised-button color="accent" [routerLink]="['/projetos/edit', viewProjeto?.projeto._id]" > <mat-icon>edit</mat-icon> Editar </button>
+  <button mat-raised-button color="primary" [routerLink]="['/us/create', viewProjeto?.projeto._id]" > <mat-icon>add</mat-icon> Criar US </button>
 </div>
 
 <mat-nav-list>
