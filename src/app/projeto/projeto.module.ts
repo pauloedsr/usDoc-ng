@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 
 import { ProjetoRoutingModule } from './projeto-routing.module';
 import { ProjetoComponent } from './projeto.component';
-import { MatListModule, MatButtonModule, MatIconModule, MatFormFieldModule, MatInputModule } from '../../../node_modules/@angular/material';
+import { MatListModule, MatButtonModule, MatIconModule, MatFormFieldModule, MatInputModule, MatCardModule } from '../../../node_modules/@angular/material';
 import { ViewProjetoComponent } from './view-projeto/view-projeto.component';
 import { FormProjetoComponent } from './form-projeto/form-projeto.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -21,6 +21,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
+    MatCardModule
   ],
   declarations: [ProjetoComponent, ViewProjetoComponent, FormProjetoComponent]
 })

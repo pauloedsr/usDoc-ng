@@ -1,31 +1,38 @@
-<div>
-  <h2 *ngIf="isNovo" >Criar Projeto</h2>
-  <h2 *ngIf="!isNovo" >Editar Projeto</h2>
+<mat-card>
+    <mat-card-header>
+        <mat-card-title *ngIf="isNovo" >Criar Projeto</mat-card-title>
+        <mat-card-title *ngIf="!isNovo" >Editar Projeto</mat-card-title>
+        <mat-card-subtitle>Utilize o formulário abaixo para especificar um US</mat-card-subtitle>
+    </mat-card-header>
+    <div class="buttons-actions">
+        <button mat-button color="primary" (click)="formProjeto.valid ? salvar() : true"><mat-icon>save</mat-icon> Salvar</button>
+        <button mat-button color="accent" *ngIf="!isNovo" [routerLink]="[ '/projetos/view', idProjeto ]"><mat-icon>close</mat-icon> Cancelar</button>
+        <button mat-button color="accent" *ngIf="isNovo" [routerLink]="[ '/projetos' ]"><mat-icon>close</mat-icon> Cancelar</button>
+    </div>
+    <mat-card-content>
+        <form [formGroup]="formProjeto">
+          <div style="margin-bottom: 20px">
+          </div>
+          <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="20px">
+            <mat-form-field appearance="outline" fxFlex>
+              <mat-label>Nome</mat-label>
+              <input matInput type="text" formControlName="nome" autocomplete="off" style="font-size: x-large">
+            </mat-form-field>
+          </div>
 
-  <form [formGroup]="formProjeto">
-    <div style="margin-bottom: 20px">
-      <button mat-flat-button color="primary" (click)="formProjeto.valid ? salvar() : true">Salvar</button>
-      <button mat-flat-button color="accent" *ngIf="!isNovo" [routerLink]="[ '/projetos/view', idProjeto ]">Cancelar</button>
-      <button mat-flat-button color="accent" *ngIf="isNovo" [routerLink]="[ '/projetos' ]">Cancelar</button>
-    </div>
-    <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="20px">
-      <mat-form-field appearance="outline" fxFlex>
-        <mat-label>Nome</mat-label>
-        <input matInput type="text" formControlName="nome" autocomplete="off" style="font-size: x-large">
-      </mat-form-field>
-    </div>
+          <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="20px">
+            <mat-form-field appearance="outline" fxFlex>
+                <mat-label>Descrição</mat-label>
+                <textarea matInput type="text"
+                      #autosize="cdkTextareaAutosize"
+                      cdkTextareaAutosize
+                      cdkAutosizeMinRows="5"
+                      cdkAutosizeMaxRows="15"
+                      placeholder="Descrever US"
+                      formControlName="descricao"></textarea>
+            </mat-form-field>
+          </div>
+        </form>
+    </mat-card-content>
+</mat-card>
 
-    <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="20px">
-      <mat-form-field appearance="outline" fxFlex>
-          <mat-label>Descrição</mat-label>
-          <textarea matInput type="text" 
-                #autosize="cdkTextareaAutosize" 
-                cdkTextareaAutosize 
-                cdkAutosizeMinRows="5"
-                cdkAutosizeMaxRows="15"
-                placeholder="Descrever US"
-                formControlName="descricao"></textarea>
-      </mat-form-field>
-    </div>
-  </form>
-</div>

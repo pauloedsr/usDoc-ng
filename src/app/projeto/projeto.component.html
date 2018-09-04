@@ -1,12 +1,19 @@
-<h2>Meus Projetos</h2>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Meus Projetos</mat-card-title>
+    <mat-card-subtitle>Selecione um projeto para listar suas US.</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+      <mat-nav-list>
+        <mat-list-item *ngFor="let projeto of projetos" [routerLink]="['/projetos/view', projeto._id]" >
+          {{projeto.nome}}
+          <mat-divider></mat-divider>
+        </mat-list-item>
+      </mat-nav-list>
+  </mat-card-content>
+  <mat-card-actions fxLayoutAlign="end">
+    <button mat-flat-button color="primary" [routerLink]="['/projetos/create']"> <mat-icon>add</mat-icon> Novo </button>
+  </mat-card-actions>
+</mat-card>
 
-<div fxFlex fxLayoutAlign="end">
-  <button mat-flat-button color="primary" [routerLink]="['/projetos/create']"> <mat-icon>add</mat-icon> Novo </button>
-</div>
 
-<mat-nav-list>
-  <mat-list-item *ngFor="let projeto of projetos" [routerLink]="['/projetos/view', projeto._id]" >
-    {{projeto.nome}}
-    <mat-divider></mat-divider>
-  </mat-list-item>
-</mat-nav-list>
