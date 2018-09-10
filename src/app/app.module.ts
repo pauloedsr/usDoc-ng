@@ -1,7 +1,7 @@
 import { TokenInterceptor } from './shared/interceptors/token.interceptor';
 import { LayoutModule } from '@angular/cdk/layout';
 import { OverlayModule } from '@angular/cdk/overlay';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import {
     MatButtonModule,
     MatIconModule,
@@ -17,6 +17,10 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { registerLocaleData } from '@angular/common';
+import localept from '@angular/common/locales/pt';
+registerLocaleData(localept, 'pt');
+
 // AoT requires an exported function for factories
 export const createTranslateLoader = (http: HttpClient) => {
     // for development
@@ -50,7 +54,8 @@ export const createTranslateLoader = (http: HttpClient) => {
           provide: HTTP_INTERCEPTORS,
           useClass: TokenInterceptor,
           multi: true
-        }
+        },
+        {provide: LOCALE_ID, useValue: 'pt' }
     ],
     bootstrap: [AppComponent]
 })
