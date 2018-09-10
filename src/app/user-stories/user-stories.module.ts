@@ -1,5 +1,5 @@
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule } from '@angular/material';
+import { MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatCardModule, MatDividerModule } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from './../layout/forms/forms.module';
 import { NgModule } from '@angular/core';
@@ -21,6 +21,8 @@ import { EditUsComponent } from './edit-us/edit-us.component';
     MatInputModule,
     MatButtonModule,
     MatIconModule,
+    MatCardModule,
+    MatDividerModule,
     FlexLayoutModule
   ],
   declarations: [UserStoriesComponent, FormUsComponent, CreateUsComponent, EditUsComponent]

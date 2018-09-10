@@ -24,13 +24,15 @@ export class UserStoriesComponent implements OnInit {
   }
 
   delete() {
-    this.usService.deleteUS(this.userStorieRestI.userStorie._id).subscribe(data => {
-      if (data.success) {
-        this.router.navigate(['projetos/view', this.userStorieRestI.projeto._id]);
-      } else {
-        console.log(data);
-      }
-    });
+    if (confirm('Confirma excluir?')) {
+        this.usService.deleteUS(this.userStorieRestI.userStorie._id).subscribe(data => {
+          if (data.success) {
+            this.router.navigate(['projetos/view', this.userStorieRestI.projeto._id]);
+          } else {
+            console.log(data);
+          }
+        });
+    }
   }
 
 }

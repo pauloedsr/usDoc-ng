@@ -1,93 +1,112 @@
-<div>
-  <h2 *ngIf="isNovo" >Criar US</h2>
-  <h2 *ngIf="!isNovo" >Editar US</h2>
+<form [formGroup]="formUs" fxLayout="column wrap" fxLayoutGap="20px">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title *ngIf="isNovo" >Criar US</mat-card-title>
+            <mat-card-title *ngIf="!isNovo" >Editar US</mat-card-title>
+            <mat-card-subtitle>Descreva a US nos campos abaixo.</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-actions align="start">
+            <button mat-button color="primary" (click)="formUs.valid ? salvar() : true"><mat-icon>save</mat-icon> Salvar</button>
+            <button mat-button color="accent" *ngIf="!isNovo" [routerLink]="[ '/us/view', idUs ]"><mat-icon>close</mat-icon> Cancelar</button>
+            <button mat-button color="accent" *ngIf="isNovo" [routerLink]="[ '/projetos/view', idProjeto ]"><mat-icon>close</mat-icon> Cancelar</button>
+        </mat-card-actions>
+        <mat-card-content>
+            <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="20px">
+              <mat-form-field appearance="outline" fxFlex="100px">
+                <mat-label>Número</mat-label>
+                <input matInput type="number" formControlName="numero" autocomplete="off" style="font-size: x-large">
+              </mat-form-field>
 
-  
-  <form [formGroup]="formUs">
-    <div style="margin-bottom: 20px">
-      <button mat-flat-button color="primary" (click)="formUs.valid ? salvar() : true">Salvar</button>
-      <button mat-flat-button color="accent" *ngIf="!isNovo" [routerLink]="[ '/us/view', idUs ]">Cancelar</button>
-      <button mat-flat-button color="accent" *ngIf="isNovo" [routerLink]="[ '/projetos/view', idProjeto ]">Cancelar</button>
-    </div>
-    <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="20px">
-      <mat-form-field appearance="outline" fxFlex="100px">
-        <mat-label>Número</mat-label>
-        <input matInput type="number" formControlName="numero" autocomplete="off" style="font-size: x-large">
-      </mat-form-field>
+              <mat-form-field appearance="outline" fxFlex>
+                <mat-label>Nome</mat-label>
+                <input matInput type="text" formControlName="nome" autocomplete="off" style="font-size: x-large">
+              </mat-form-field>
+            </div>
 
-      <mat-form-field appearance="outline" fxFlex>
-        <mat-label>Nome</mat-label>
-        <input matInput type="text" formControlName="nome" autocomplete="off" style="font-size: x-large">
-      </mat-form-field>
-    </div>
+            <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="20px">
+              <mat-form-field appearance="outline" fxFlex>
+                  <mat-label>Descrição</mat-label>
+                  <textarea matInput type="text"
+                        #autosize="cdkTextareaAutosize"
+                        cdkTextareaAutosize
+                        cdkAutosizeMinRows="5"
+                        cdkAutosizeMaxRows="8"
+                        placeholder="Descrever US"
+                        formControlName="descricao"></textarea>
+              </mat-form-field>
+            </div>
+        </mat-card-content>
+    </mat-card>
 
-    <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="20px">
-      <mat-form-field appearance="outline" fxFlex>
-          <mat-label>Descrição</mat-label>
-          <textarea matInput type="text" 
-                #autosize="cdkTextareaAutosize" 
-                cdkTextareaAutosize 
-                cdkAutosizeMinRows="5"
-                cdkAutosizeMaxRows="8"
-                placeholder="Descrever US"
-                formControlName="descricao"></textarea>
-      </mat-form-field>
-    </div>
+    <mat-card>
+            <mat-card-header>
+                    <mat-card-title >Critérios</mat-card-title>
+                    <mat-card-subtitle>Descreva as pré-condições da US.</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-actions align="start">
+                <button mat-button (click)="adicionarItem('preCondicoes')" type="button" color="primary"><mat-icon>add</mat-icon> Adicionar</button>
+            </mat-card-actions>
+            <mat-card-content>
+                <div fxFlexFill fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="10px" formArrayName="preCondicoes"
+                  *ngFor="let itemPre of getFormArray('preCondicoes').controls; let i = index" >
+                    <div fxFlexFill fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="10px" [formGroupName]="i">
+                        <mat-form-field appearance="outline" fxFlex="80px">
+                            <mat-label>Número</mat-label>
+                            <input matInput type="number" formControlName="numero" autocomplete="off">
+                            </mat-form-field>
 
-    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px">
-      <p fxFlex="100px">Pré-condições</p>
-      <button mat-stroked-button (click)="adicionarItem('preCondicoes')" type="button" color="accent">Adicionar</button>
-    </div>
-    <div fxFlexFill fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="10px" formArrayName="preCondicoes" 
-      *ngFor="let itemPre of getFormArray('preCondicoes').controls; let i = index" >
-      <div fxFlexFill fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="10px" [formGroupName]="i">
-          <mat-form-field appearance="outline" fxFlex="80px">
-              <mat-label>Número</mat-label>
-              <input matInput type="number" formControlName="numero" autocomplete="off">
-            </mat-form-field>
-      
-            <mat-form-field appearance="outline" fxFlex>
-              <mat-label>Descrição</mat-label>
-              <textarea matInput type="text" 
-                #autosize="cdkTextareaAutosize" 
-                cdkTextareaAutosize 
-                cdkAutosizeMinRows="1"
-                cdkAutosizeMaxRows="5"
-                formControlName="descricao"></textarea>
-            </mat-form-field>
+                            <mat-form-field appearance="outline" fxFlex>
+                            <mat-label>Descrição</mat-label>
+                            <textarea matInput type="text"
+                                #autosize="cdkTextareaAutosize"
+                                cdkTextareaAutosize
+                                cdkAutosizeMinRows="1"
+                                cdkAutosizeMaxRows="15"
+                                formControlName="descricao"></textarea>
+                            </mat-form-field>
 
-            <button mat-icon-button color="warn" (click)="removerItem('preCondicoes', i)">
-              <mat-icon>close</mat-icon>
-            </button>
-      </div>
-    </div>
+                            <button mat-icon-button color="warn" (click)="removerItem('preCondicoes', i)">
+                            <mat-icon>close</mat-icon>
+                            </button>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
 
-    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px">
-      <p fxFlex="100px">Condições</p>
-      <button mat-stroked-button (click)="adicionarItem('criterios')" type="button" color="accent">Adicionar</button>
-    </div>
-    <div fxFlexFill fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="10px" formArrayName="criterios" 
-      *ngFor="let itemPre of getFormArray('criterios').controls; let i = index" >
-      <div fxFlexFill fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="10px" [formGroupName]="i">
-          <mat-form-field appearance="outline" fxFlex="80px">
-              <mat-label>Número</mat-label>
-              <input matInput type="number" formControlName="numero" autocomplete="off">
-            </mat-form-field>
-      
-            <mat-form-field appearance="outline" fxFlex>
-              <mat-label>Descrição</mat-label>
-              <textarea matInput type="text" 
-                #autosize="cdkTextareaAutosize" 
-                cdkTextareaAutosize 
-                cdkAutosizeMinRows="1"
-                cdkAutosizeMaxRows="5"
-                formControlName="descricao"></textarea>
-            </mat-form-field>
+        <mat-card>
+                <mat-card-header>
+                    <mat-card-title >Critérios</mat-card-title>
+                    <mat-card-subtitle>Descreva os critérios da US.</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-actions align="start">
+                    <button mat-button (click)="adicionarItem('criterios')" type="button" color="primary"><mat-icon>add</mat-icon> Adicionar</button>
+                </mat-card-actions>
+                <mat-card-content>
+                    <div fxFlexFill fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="10px" formArrayName="criterios"
+                      *ngFor="let itemPre of getFormArray('criterios').controls; let i = index" >
+                        <div fxFlexFill fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="10px" [formGroupName]="i">
+                            <mat-form-field appearance="outline" fxFlex="80px">
+                                <mat-label>Número</mat-label>
+                                <input matInput type="number" formControlName="numero" autocomplete="off">
+                                </mat-form-field>
 
-            <button mat-icon-button color="warn" (click)="removerItem('criterios', i)">
-              <mat-icon>close</mat-icon>
-            </button>
-      </div>
-    </div>
-  </form>
-</div>
+                                <mat-form-field appearance="outline" fxFlex>
+                                <mat-label>Descrição</mat-label>
+                                <textarea matInput type="text"
+                                    #autosize="cdkTextareaAutosize"
+                                    cdkTextareaAutosize
+                                    cdkAutosizeMinRows="1"
+                                    cdkAutosizeMaxRows="15"
+                                    formControlName="descricao"></textarea>
+                                </mat-form-field>
+
+                                <button mat-icon-button color="warn" (click)="removerItem('criterios', i)">
+                                    <mat-icon>close</mat-icon>
+                                </button>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+</form>
+
+

@@ -4,7 +4,7 @@ body {
     margin: 0;
 }
 
-.main-container {
+.main-container, body {
     background-color: rgb(250, 250, 250);
 }
 
@@ -18,4 +18,13 @@ body {
 
 .mat-card .buttons-actions button {
     margin-right: 3px;
+}
+
+a {
+    color: blue;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
 }

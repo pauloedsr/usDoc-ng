@@ -1,21 +1,26 @@
-<div *ngIf="userStorieRestI">
-  <div fxLayout="row" fxLayoutAlign="end center">
-    <button mat-flat-button color="accent" [routerLink]="['/us/edit', userStorieRestI.userStorie._id]" >Editar</button>
-    <button mat-flat-button color="warn" (click)="delete()" >Excluir</button>
-  </div>
-  <h2>US{{userStorieRestI.userStorie.numero}} -  {{userStorieRestI.userStorie.nome}} </h2>
+<mat-card fxFlex.gt-md="70">
+    <mat-card-header>
+        <mat-card-title>US{{userStorieRestI.userStorie.numero}} - {{userStorieRestI.userStorie.nome}} </mat-card-title>
+        <mat-card-subtitle> <a [routerLink]="['/projetos/view', userStorieRestI.projeto._id]" >{{userStorieRestI.projeto.nome}}</a> - {{userStorieRestI.userStorie.createdAt | date}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-actions align="start">
+        <button mat-button color="accent" [routerLink]="['/us/edit', userStorieRestI.userStorie._id]"><mat-icon>edit</mat-icon> Editar</button>
+        <button mat-button color="warn" (click)="delete()"><mat-icon>close</mat-icon> Excluir</button>
+    </mat-card-actions>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+        <div *ngIf="userStorieRestI">
+            <p>{{userStorieRestI.userStorie.descricao}}</p>
 
-  <p>{{userStorieRestI.userStorie.descricao}}</p>
+            <h3>Pré-condições</h3>
+            <p *ngFor="let item of userStorieRestI.userStorie.preCondicoes">
+                <b>{{item.numero}}.</b> {{item.descricao}}
+            </p>
 
-  <h3>Pré-condições</h3>
-  <ul>
-    <li *ngFor="let item of userStorieRestI.userStorie.preCondicoes">
-      {{item.numero}} - {{item.descricao}}
-    </li>
-  </ul>
-
-  <h3>Critérios</h3>
-    <p *ngFor="let item of userStorieRestI.userStorie.criterios">
-      {{item.numero}} - {{item.descricao}}
-    </p>
-</div>
+            <h3>Critérios</h3>
+            <p *ngFor="let item of userStorieRestI.userStorie.criterios">
+                <b>{{item.numero}}.</b> {{item.descricao}}
+            </p>
+        </div>
+    </mat-card-content>
+</mat-card>
