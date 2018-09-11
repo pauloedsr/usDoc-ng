@@ -30,7 +30,8 @@ export class UsService {
 
   viewUS(id: string): Observable<UserStorieRestI> {
     return Observable.create(observer => {
-      this.http.get(`${SERVER_URL}/us/view/${id}`).subscribe((data: UserStorieRestI) => {
+      this.http.get(`${SERVER_URL}/us/view/${id}`).subscribe((data: SuccessI) => {
+        data.obj = data.obj as UserStorieI;
         observer.next(data);
       });
     });
@@ -59,7 +60,7 @@ export class UsService {
       });
     });
   }
-  
+
   postProjeto(projeto: ProjetosRestI): Observable<ProjetosRestI> {
     return Observable.create(observer => {
       this.http.post(`${SERVER_URL}/projeto`, projeto).subscribe((data: ProjetosRestI) => {

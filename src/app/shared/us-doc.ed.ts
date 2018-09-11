@@ -20,8 +20,7 @@ export interface CondicoesI {
 
 export interface UserStorieRestI {
     success: boolean;
-    userStorie: UserStorieI;
-    projeto: ProjetoI;
+    obj: UserStorieI;
   }
 
 export interface ProjetoI {
@@ -40,7 +39,7 @@ export interface UserStorieI {
     createdAt: string;
     descricao: string;
     autor: string;
-    projeto: string;
+    projeto: ProjetoI | string;
     numero: number;
     nome: string;
     __v: number;

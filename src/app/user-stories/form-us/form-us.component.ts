@@ -37,12 +37,12 @@ export class FormUsComponent implements OnInit {
     if (!this.isNovo) {
       this.usService.viewUS(this.idUs).subscribe(data => {
         console.log(data);
-        delete data.userStorie.updatedAt;
-        delete data.userStorie.createdAt;
-        delete data.userStorie.__v;
-        data.userStorie.preCondicoes.forEach(pre => { this.adicionarItem('preCondicoes'); } );
-        data.userStorie.criterios.forEach(pre => { this.adicionarItem('criterios'); } );
-        this.formUs.setValue(data.userStorie);
+        delete data.obj.updatedAt;
+        delete data.obj.createdAt;
+        delete data.obj.__v;
+        data.obj.preCondicoes.forEach(pre => { this.adicionarItem('preCondicoes'); } );
+        data.obj.criterios.forEach(pre => { this.adicionarItem('criterios'); } );
+        this.formUs.setValue(data.obj);
       });
     } else {
       // this.adicionarItem('preCondicoes');
@@ -64,7 +64,7 @@ export class FormUsComponent implements OnInit {
     const itensPre = this.formUs.get(formArrayName) as FormArray;
     itensPre.push(this.addItemFormArray());
   }
-  
+
   removerItem(formArrayName: string, index: number) {
     const itensPre = this.formUs.get(formArrayName) as FormArray;
     itensPre.removeAt(index);
