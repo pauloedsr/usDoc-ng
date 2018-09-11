@@ -10,6 +10,7 @@ import { UserStoriesComponent } from './user-stories.component';
 import { FormUsComponent } from './form-us/form-us.component';
 import { CreateUsComponent } from './create-us/create-us.component';
 import { EditUsComponent } from './edit-us/edit-us.component';
+import { FileUploadModule } from 'ng2-file-upload';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { EditUsComponent } from './edit-us/edit-us.component';
     MatIconModule,
     MatCardModule,
     MatDividerModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    FileUploadModule
   ],
   declarations: [UserStoriesComponent, FormUsComponent, CreateUsComponent, EditUsComponent]
 })
