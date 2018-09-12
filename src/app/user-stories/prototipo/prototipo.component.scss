@@ -6,10 +6,26 @@
     display: block;
 }
 
+.editar {
+    padding: 2px;
+    display: block;
+}
 .editar:hover {
-    box-shadow: 0px 0px 4px grey;
+    padding: 1px;
+    border: solid grey 1px;
 }
 
 .edicao input {
     width: 100%;
+}
+
+.btn-excluir {
+    position: absolute;
+    right: 0;
+    top: 0;
+    visibility: hidden;
+}
+
+.mat-card:hover .btn-excluir {
+    visibility: visible;
 }

@@ -1,4 +1,7 @@
 <mat-card>
+    <button mat-icon-button (click)="onDelete()" class="btn-excluir" color="warn">
+        <mat-icon>delete_forever</mat-icon>
+    </button>
     <a matCardImage class="imagem" [ngStyle]="{'background-image': 'url(\''+getImg()+'\''}" [href]="getImg()" target="_blank"></a>
     <mat-card-content>
         <div *ngIf="!isEditar" (click)="isEditar = true" class="editar" >

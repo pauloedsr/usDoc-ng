@@ -1,5 +1,5 @@
 <div fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="20px" *ngIf="userStorieRestI">
-    <mat-card fxFlex.gt-md="70" style="margin-bottom: 2s0px;">
+    <mat-card fxFlex.gt-md="70" style="margin-bottom: 20px;">
         <mat-card-header>
             <mat-card-title>US{{userStorieRestI.obj.numero}} - {{userStorieRestI.obj.nome}} </mat-card-title>
             <mat-card-subtitle>
@@ -43,7 +43,7 @@
             <mat-icon class="mat-18">add</mat-icon> Adicionar Protótipo
         </button>
 
-        <div fxLayout="row wrap" fxLayoutAlign="start start">
+        <div fxLayout="row wrap" fxLayoutAlign="start start" fxFlexFill>
             <app-prototipo
                 *ngFor="let prototipo of userStorieRestI.obj.prototipos"
                 [prototipoI]="prototipo" (prototiposUpdate)="atualizaPrototipos($event)"

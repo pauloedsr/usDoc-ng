@@ -42,4 +42,12 @@ export class PrototipoComponent implements OnInit {
         }
   }
 
+  onDelete() {
+    if (!confirm(`Confirma exclusão de ${this.prototipoI.descricao}?`)) { return; }
+
+    this.us.deletePrototipo(this.prototipoI._id).subscribe(data => {
+          this.prototiposUpdate.emit(data);
+    });
+  }
+
 }
