@@ -96,6 +96,16 @@ export class UsService {
         });
     }
 
+    viewPrototipo(id: string): Observable<PrototipoI> {
+        return Observable.create(observer => {
+            this.http.get(`${SERVER_URL}/prototipo/view/${id}`).subscribe((data: SuccessI) => {
+                if (data.success) {
+                    observer.next(data.obj as PrototipoI);
+                }
+            });
+        });
+    }
+
     deletePrototipo(id: string): Observable<PrototipoI[]> {
         return Observable.create(observer => {
             this.http.delete(`${SERVER_URL}/prototipo/${id}`).subscribe((data: SuccessI) => {

@@ -58,7 +58,9 @@ export class PrototipoComponent implements OnInit {
     openDialog(): void {
         const dialogRef = this.dialog.open(PrototipoModalComponent, {
             width: '90vw',
-            height: '90vh',
+            height: '80vh',
+            panelClass: 'prototipo-dialog-container',
+            autoFocus: false,
             data: this.prototipoI
         });
     }

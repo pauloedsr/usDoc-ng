@@ -26,13 +26,11 @@
             <h3>Pré-condições</h3>
             <p *ngFor="let item of userStorieRestI.obj.preCondicoes">
                 <b>{{item.numero}}.</b> {{item.descricao}}
-                <mat-divider [inset]="true" style="margin-top:10px;"></mat-divider>
             </p>
 
             <h3>Critérios</h3>
             <p *ngFor="let item of userStorieRestI.obj.criterios">
                 <b>{{item.numero}}.</b> {{item.descricao}}
-                <mat-divider [inset]="true" style="margin-top:10px;"></mat-divider>
             </p>
         </mat-card-content>
     </mat-card>

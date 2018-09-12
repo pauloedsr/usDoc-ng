@@ -73,4 +73,9 @@ export interface PrototipoI {
     size: number;
     __v: number;
     descricao?: string;
+    comentarios?: ComentarioI[];
 }
+ export interface ComentarioI {
+     comentario: string;
+     autor: any;
+ }

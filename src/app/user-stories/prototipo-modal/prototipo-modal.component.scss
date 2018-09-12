@@ -1,0 +1,60 @@
+.box-modal-prototipo {
+    position: relative;
+    height: 100%;
+}
+.imagem {
+    height: 100%;
+    background-color: black;
+}
+.imagem img {
+    max-width: 95%;
+    max-height: 95%;
+}
+
+.info {
+    padding: 24px;
+    overflow: auto;
+    height: 100%;
+}
+
+.close {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+h1 {
+    font-size: 1.5rem;
+    font-weight: 100;
+    word-break: break-word;
+}
+
+.mat-form-field, .info {
+    font-size: 0.8rem;
+}
+
+.info ul {
+    margin: 0;
+    padding: 0;
+}
+
+.info li {
+    background-color: rgb(245,245,245);
+    border-radius: 5px;
+    list-style: none;
+    padding: 10px;
+    margin-bottom: 4px;
+    white-space: pre-line;
+    position: relative;
+}
+
+.info li .mat-icon {
+    font-size: 0.7rem;
+    visibility: hidden;
+}
+
+.info li:hover .mat-icon {
+    visibility: visible;
+    cursor: pointer;
+    color: red;
+}

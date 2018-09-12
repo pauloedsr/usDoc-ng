@@ -1,8 +1,31 @@
-<div>
-    <div>
+<div fxLayout="row" fxLayoutAlign="start start" class="box-modal-prototipo">
+    <button mat-icon-button (click)="onClose()" class="close">
+        <mat-icon>close</mat-icon>
+    </button>
+    <div fxFlex="80" fxLayoutAlign="center center" class="imagem">
         <img [src]="getImg()" />
     </div>
 
-    <div>Comentarios</div>
+    <div fxFlex="20" class="info">
+        <h1>{{data.descricao}}</h1>
+
+        <mat-form-field appearance="outline" style="width:100%">
+            <mat-label>Comentário</mat-label>
+            <textarea matInput type="text"
+                #autosize="cdkTextareaAutosize"
+                #txtComentario
+                cdkTextareaAutosize
+                cdkAutosizeMinRows="2"
+                cdkAutosizeMaxRows="4"
+                placeholder="Descrever US" (blur)="salvaComentario()"></textarea>
+        </mat-form-field>
+
+        <ul *ngIf="data.comentarios" >
+            <li *ngFor="let item of data.comentarios; let i = index">
+                {{item.comentario}}
+                <div mat-mini-fab (click)="onRemove(i)" class="close"> <mat-icon>close</mat-icon> </div>
+            </li>
+        </ul>
+    </div>
 
 </div>
