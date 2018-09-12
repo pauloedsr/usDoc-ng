@@ -1,0 +1,11 @@
+<mat-card>
+    <a matCardImage class="imagem" [ngStyle]="{'background-image': 'url(\''+getImg()+'\''}" [href]="getImg()" target="_blank"></a>
+    <mat-card-content>
+        <div *ngIf="!isEditar" (click)="isEditar = true" class="editar" >
+            {{prototipoI.descricao ? prototipoI.descricao : prototipoI.originalname}}
+        </div>
+        <div *ngIf="isEditar" class="edicao" (mouseover)="inEditar.focus()" (keypress)="onKey($event)">
+            <input type="text" #inEditar [value]="prototipoI.descricao" placeholder="Adicionar descrição" (blur)="salvaEdicao(inEditar.value)" />
+        </div>
+    </mat-card-content>
+</mat-card>

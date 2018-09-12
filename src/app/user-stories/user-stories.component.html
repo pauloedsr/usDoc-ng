@@ -1,5 +1,5 @@
-<div fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="20px">
-    <mat-card fxFlex.gt-md="70" *ngIf="userStorieRestI" style="margin-bottom: 2s0px;">
+<div fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="20px" *ngIf="userStorieRestI">
+    <mat-card fxFlex.gt-md="70" style="margin-bottom: 2s0px;">
         <mat-card-header>
             <mat-card-title>US{{userStorieRestI.obj.numero}} - {{userStorieRestI.obj.nome}} </mat-card-title>
             <mat-card-subtitle>
@@ -18,24 +18,38 @@
         </mat-card-actions>
         <mat-divider></mat-divider>
         <mat-card-content>
-            <p>{{userStorieRestI.obj.descricao}}</p>
+            <p>
+                {{userStorieRestI.obj.descricao}}
+                <mat-divider [inset]="true" style="margin-top:10px;"></mat-divider>
+            </p>
 
             <h3>Pré-condições</h3>
             <p *ngFor="let item of userStorieRestI.obj.preCondicoes">
                 <b>{{item.numero}}.</b> {{item.descricao}}
+                <mat-divider [inset]="true" style="margin-top:10px;"></mat-divider>
             </p>
 
             <h3>Critérios</h3>
             <p *ngFor="let item of userStorieRestI.obj.criterios">
                 <b>{{item.numero}}.</b> {{item.descricao}}
+                <mat-divider [inset]="true" style="margin-top:10px;"></mat-divider>
             </p>
         </mat-card-content>
     </mat-card>
 
-    <div fxLayout="column wrap" fxLayoutAlign="start start" fxLayoutGap="20px">
+    <div class="box-prototipos" fxFlex.gt-md="28" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="20px">
         <input type="file" #inputFile name="photo" ng2FileSelect [uploader]="uploader" style="display:none;" />
-        <button mat-fab (click)="inputFile.click()" color="primary">
-            <mat-icon class="mat-18">add</mat-icon>
+        <button mat-raised-button fxFlexFill (click)="inputFile.click()" color="accent">
+            <mat-icon class="mat-18">add</mat-icon> Adicionar Protótipo
         </button>
+
+        <div fxLayout="row wrap" fxLayoutAlign="start start">
+            <app-prototipo
+                *ngFor="let prototipo of userStorieRestI.obj.prototipos"
+                [prototipoI]="prototipo" (prototiposUpdate)="atualizaPrototipos($event)"
+                fxFlex="calc(50% - 10px)"
+                style="margin-right:10px; margin-bottom:10px;"
+            ></app-prototipo>
+        </div>
     </div>
 </div>

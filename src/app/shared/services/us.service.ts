@@ -1,4 +1,4 @@
-import { ProjetosRestI, ViewProjetoRestI, UserStorieRestI, UserStorieI, ProjetoI, SuccessI } from './../us-doc.ed';
+import { ProjetosRestI, ViewProjetoRestI, UserStorieRestI, UserStorieI, ProjetoI, SuccessI, PrototipoI } from './../us-doc.ed';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -75,5 +75,26 @@ export class UsService {
         observer.next(data);
       });
     });
-  }
+
+}
+
+    putPrototipo(prototipo: PrototipoI): Observable<PrototipoI[]> {
+        return Observable.create(observer => {
+            this.http.put(`${SERVER_URL}/prototipo/${prototipo.userStorie}`, prototipo).subscribe((data: SuccessI) => {
+            observer.next(data.obj as PrototipoI[]);
+            });
+        });
+    }
+
+    listPrototipo(idus: string): Observable<PrototipoI[]> {
+        return Observable.create(observer => {
+            this.http.get(`${SERVER_URL}/prototipo/list/${idus}`).subscribe((data: SuccessI) => {
+                if (data.success) {
+                    observer.next(data.obj as PrototipoI[]);
+                }
+            });
+        });
+    }
+
+
 }

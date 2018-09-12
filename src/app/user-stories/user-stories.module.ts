@@ -1,3 +1,4 @@
+import { MatGridListModule } from '@angular/material/grid-list';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatCardModule, MatDividerModule } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -11,6 +12,7 @@ import { FormUsComponent } from './form-us/form-us.component';
 import { CreateUsComponent } from './create-us/create-us.component';
 import { EditUsComponent } from './edit-us/edit-us.component';
 import { FileUploadModule } from 'ng2-file-upload';
+import { PrototipoComponent } from './prototipo/prototipo.component';
 
 @NgModule({
   imports: [
@@ -24,9 +26,10 @@ import { FileUploadModule } from 'ng2-file-upload';
     MatIconModule,
     MatCardModule,
     MatDividerModule,
+    MatGridListModule,
     FlexLayoutModule,
     FileUploadModule
   ],
-  declarations: [UserStoriesComponent, FormUsComponent, CreateUsComponent, EditUsComponent]
+  declarations: [UserStoriesComponent, FormUsComponent, CreateUsComponent, EditUsComponent, PrototipoComponent]
 })
 export class UserStoriesModule { }

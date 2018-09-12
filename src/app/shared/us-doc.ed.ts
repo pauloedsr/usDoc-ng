@@ -39,12 +39,13 @@ export interface UserStorieI {
     createdAt: string;
     descricao: string;
     autor: string;
-    projeto: ProjetoI | string;
+    projeto: ProjetoI | String;
     numero: number;
     nome: string;
     __v: number;
     criterios: CondicoesI[];
     preCondicoes: CondicoesI[];
+    prototipos?: PrototipoI[];
 }
 
 export interface CondicoesI {
@@ -55,4 +56,21 @@ export interface CondicoesI {
 export interface SuccessI {
     success: boolean;
     obj: any;
+}
+
+export interface PrototipoI {
+    _id: string;
+    updatedAt: string;
+    createdAt: string;
+    userStorie: string;
+    fieldname: string;
+    originalname: string;
+    encoding: string;
+    mimetype: string;
+    destination: string;
+    filename: string;
+    path: string;
+    size: number;
+    __v: number;
+    descricao?: string;
 }

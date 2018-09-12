@@ -1,5 +1,5 @@
 import { UsService } from './../shared/services/us.service';
-import { UserStorieRestI, ProjetoI } from './../shared/us-doc.ed';
+import { UserStorieRestI, ProjetoI, PrototipoI } from './../shared/us-doc.ed';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '../../../node_modules/@angular/router';
 import {  FileUploader } from 'ng2-file-upload/ng2-file-upload';
@@ -31,10 +31,10 @@ export class UserStoriesComponent implements OnInit {
         });
         this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
         this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
-            console.log('ots', this.uploader.options);
-
             this.inputFile.nativeElement.value = '';
-            console.log('ImageUpload:uploaded:', item, status, response);
+            this.usService.listPrototipo(this.userStorieRestI.obj._id).subscribe(data => {
+                this.userStorieRestI.obj.prototipos = data;
+            });
         };
     }
 
@@ -50,8 +50,7 @@ export class UserStoriesComponent implements OnInit {
         }
     }
 
-    onUpload() {
-
-  }
-
+    atualizaPrototipos(event: PrototipoI[]) {
+        this.userStorieRestI.obj.prototipos = event;
+    }
 }

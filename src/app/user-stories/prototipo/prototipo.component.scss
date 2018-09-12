@@ -1,0 +1,15 @@
+.imagem {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 200px;
+    display: block;
+}
+
+.editar:hover {
+    box-shadow: 0px 0px 4px grey;
+}
+
+.edicao input {
+    width: 100%;
+}
