@@ -1,29 +1,32 @@
+import { SERVER_URL } from './../../config';
+import { MatDialog } from '@angular/material';
 import { UsService } from './../../shared/services/us.service';
 import { PrototipoI } from './../../shared/us-doc.ed';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { PrototipoModalComponent } from '../prototipo-modal/prototipo-modal.component';
 
 @Component({
-  selector: 'app-prototipo',
-  templateUrl: './prototipo.component.html',
-  styleUrls: ['./prototipo.component.scss']
+    selector: 'app-prototipo',
+    templateUrl: './prototipo.component.html',
+    styleUrls: ['./prototipo.component.scss']
 })
 export class PrototipoComponent implements OnInit {
+    @Input()
+    prototipoI: PrototipoI;
+    @Output()
+    prototiposUpdate: EventEmitter<PrototipoI[]> = new EventEmitter();
 
-  @Input() prototipoI: PrototipoI;
-  @Output() prototiposUpdate: EventEmitter<PrototipoI[]> = new EventEmitter();
+    isEditar = false;
 
-  isEditar = false;
+    constructor(private us: UsService, public dialog: MatDialog) {}
 
-  constructor(private us: UsService) { }
+    ngOnInit() {}
 
-  ngOnInit() {
-  }
+    getImg(): string {
+        return `${SERVER_URL}/prototipo/${this.prototipoI.filename}`;
+    }
 
-  getImg(): string {
-      return `http://localhost:3000/prototipo/${this.prototipoI.filename}`;
-  }
-
-  salvaEdicao(value: string) {
+    salvaEdicao(value: string) {
         this.isEditar = false;
         if (value.trim() === '' || this.prototipoI.descricao === value) {
             return;
@@ -33,21 +36,30 @@ export class PrototipoComponent implements OnInit {
             console.log(data);
             this.prototiposUpdate.emit(data);
         });
+    }
 
-  }
-
-  onKey(event: KeyboardEvent) {
+    onKey(event: KeyboardEvent) {
         if (event.keyCode === 13) {
-            this.salvaEdicao(event.target.value);
+            const target = event.target as HTMLInputElement;
+            this.salvaEdicao(target.value);
         }
-  }
+    }
 
-  onDelete() {
-    if (!confirm(`Confirma exclusão de ${this.prototipoI.descricao}?`)) { return; }
+    onDelete() {
+        if (!confirm(`Confirma exclusão de ${this.prototipoI.descricao}?`)) {
+            return;
+        }
 
-    this.us.deletePrototipo(this.prototipoI._id).subscribe(data => {
-          this.prototiposUpdate.emit(data);
-    });
-  }
+        this.us.deletePrototipo(this.prototipoI._id).subscribe(data => {
+            this.prototiposUpdate.emit(data);
+        });
+    }
 
+    openDialog(): void {
+        const dialogRef = this.dialog.open(PrototipoModalComponent, {
+            width: '90vw',
+            height: '90vh',
+            data: this.prototipoI
+        });
+    }
 }

@@ -38,6 +38,10 @@ export class UserStoriesComponent implements OnInit {
         };
     }
 
+    getProjeto(): ProjetoI {
+        return this.userStorieRestI.obj.projeto as ProjetoI;
+    }
+
     delete() {
         if (confirm('Confirma excluir?')) {
             this.usService.deleteUS(this.userStorieRestI.obj._id).subscribe(data => {

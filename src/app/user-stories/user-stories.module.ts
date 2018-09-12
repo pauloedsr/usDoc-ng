@@ -1,6 +1,6 @@
 import { MatGridListModule } from '@angular/material/grid-list';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatCardModule, MatDividerModule } from '@angular/material';
+import { MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatCardModule, MatDividerModule, MatDialogModule } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from './../layout/forms/forms.module';
 import { NgModule } from '@angular/core';
@@ -13,6 +13,7 @@ import { CreateUsComponent } from './create-us/create-us.component';
 import { EditUsComponent } from './edit-us/edit-us.component';
 import { FileUploadModule } from 'ng2-file-upload';
 import { PrototipoComponent } from './prototipo/prototipo.component';
+import { PrototipoModalComponent } from './prototipo-modal/prototipo-modal.component';
 
 @NgModule({
   imports: [
@@ -27,9 +28,11 @@ import { PrototipoComponent } from './prototipo/prototipo.component';
     MatCardModule,
     MatDividerModule,
     MatGridListModule,
+    MatDialogModule,
     FlexLayoutModule,
     FileUploadModule
   ],
-  declarations: [UserStoriesComponent, FormUsComponent, CreateUsComponent, EditUsComponent, PrototipoComponent]
+  declarations: [UserStoriesComponent, FormUsComponent, CreateUsComponent, EditUsComponent, PrototipoComponent, PrototipoModalComponent],
+  entryComponents: [PrototipoModalComponent]
 })
 export class UserStoriesModule { }
