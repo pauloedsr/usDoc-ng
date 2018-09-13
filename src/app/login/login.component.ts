@@ -1,5 +1,8 @@
+import { AuthService } from './../shared/services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { LoginFormI } from '../shared/us-doc.ed';
 
 @Component({
     selector: 'app-login',
@@ -7,14 +10,33 @@ import { Router } from '@angular/router';
     styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-    constructor(private router: Router) {}
 
-    ngOnInit() {}
+    formLogin: FormGroup;
+
+    constructor(
+        private router: Router,
+        private fb: FormBuilder,
+        private auth: AuthService) {}
+
+    ngOnInit() {
+        this.setFormLogin();
+    }
+
+    private setFormLogin() {
+        this.formLogin = this.fb.group({
+          email: new FormControl('', Validators.required),
+          password: new FormControl('', Validators.required),
+        });
+      }
 
     onLogin() {
-        localStorage.setItem('isLoggedin', 'true');
-        localStorage.setItem('id', '5b89aeccf115e7148c64c80c');
-        localStorage.setItem('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNWI4OWFlY2NmMTE1ZTcxNDhjNjRjODBjIiwiaWF0IjoxNTM1NzUwMDQ0fQ.iT6dxqlNGtz5yx1eGdBPJ8MQPHRrDOizGKu3AdD05ZQ');
-        this.router.navigate(['/dashboard']);
+        const login = this.formLogin.value as LoginFormI;
+        console.log(login);
+
+        this.auth.autenticar(login).subscribe(data => {
+            if (data.success) {
+                this.router.navigate(['/projetos']);
+            }
+        });
     }
 }

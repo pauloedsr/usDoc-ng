@@ -75,7 +75,28 @@ export interface PrototipoI {
     descricao?: string;
     comentarios?: ComentarioI[];
 }
- export interface ComentarioI {
-     comentario: string;
-     autor: any;
- }
+export interface ComentarioI {
+    comentario: string;
+    autor: any;
+}
+
+export interface LoginFormI {
+    email: string;
+    password: string;
+}
+
+export interface LoginRestI {
+    user: UserI;
+    token: string;
+    success: boolean;
+}
+
+export interface UserI {
+    _id: string;
+    updatedAt: string;
+    createdAt: string;
+    email: string;
+    password: string;
+    __v: number;
+    tokens: any[];
+}

@@ -1,32 +1,20 @@
-<div class="login-page">
-    <div class="content">
-        <form class="login-form">
+<div fxLayout="row" fxLayoutAlign="center center" style="height: 100%">
+    <div class="content" fxFlex="300px" fxFlex.lt-sm="90">
+        <form [formGroup]="formLogin">
             <h2 style="margin-top: 0">Login</h2>
-            <div fxFlex fxLayout="row" fxLayout.lt-md="column">
-                <div fxFlexFill>
-                    <mat-form-field class="w-100">
-                        <input matInput placeholder="Email">
-                    </mat-form-field>
-                </div>
+            <div fxFlex fxLayout="column">
+                <mat-form-field>
+                    <input matInput formControlName="email" placeholder="Email">
+                </mat-form-field>
             </div>
-            <div fxFlex fxLayout="row" fxLayout.lt-md="column">
-                <div fxFlexFill>
-                    <mat-form-field class="w-100">
-                        <input matInput type="password" placeholder="Password">
-                    </mat-form-field>
-                </div>
+            <div fxFlex fxLayout="column">
+                <mat-form-field>
+                    <input matInput type="password" formControlName="password" placeholder="Password">
+                </mat-form-field>
             </div>
-            <div fxFlex fxLayout="row" fxLayout.lt-md="column" style="margin: 20px 0 30px 0">
-                <div fxFlex>
-                    <mat-checkbox color="primary">Remember Me</mat-checkbox>
-                </div>
-                <div fxFlex fxLayoutAlign="end">
-                    <a href="javascript:void(0)">Forget Password</a>
-                </div>
-            </div>
-            <div fxFlex fxLayout="row" fxLayout.lt-md="column">
+            <div fxFlex fxLayout="column">
                 <div fxFlexFill>
-                    <button mat-flat-button color="primary" class="w-100" (click)="onLogin()">Login</button>
+                    <button mat-flat-button color="primary" (click)="formLogin.valid ? onLogin() : true">Login</button>
                 </div>
             </div>
 
