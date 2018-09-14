@@ -4,4 +4,7 @@
 <div class="main-container">
     <router-outlet></router-outlet>
 </div>
+<div class="loader" *ngIf="loader.progress$|async" >
+    <mat-progress-bar mode="determinate" [value]="loader.progress$|async" color="accent"></mat-progress-bar>
+</div>
 <!-- <app-barra-tarefas></app-barra-tarefas> -->

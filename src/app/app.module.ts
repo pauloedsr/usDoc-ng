@@ -14,7 +14,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-
+import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
+import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { registerLocaleData } from '@angular/common';
@@ -38,6 +39,8 @@ export const createTranslateLoader = (http: HttpClient) => {
         BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
+        LoadingBarHttpClientModule,
+        LoadingBarRouterModule,
         LayoutModule,
         OverlayModule,
         HttpClientModule,

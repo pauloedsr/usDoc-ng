@@ -565,6 +565,10 @@ END OF TERMS AND CONDITIONS
 MIT
 MIT
 
+@ngx-loading-bar/core@2.2.0
+MIT
+MIT
+
 @angular/animations@6.0.0
 MIT
 MIT

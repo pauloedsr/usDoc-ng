@@ -3,6 +3,7 @@ import { UserStorieRestI, ProjetoI, PrototipoI } from './../shared/us-doc.ed';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '../../../node_modules/@angular/router';
 import {  FileUploader } from 'ng2-file-upload/ng2-file-upload';
+import { SERVER_URL } from '../config';
 
 @Component({
   selector: 'app-user-stories',
@@ -12,7 +13,7 @@ import {  FileUploader } from 'ng2-file-upload/ng2-file-upload';
 export class UserStoriesComponent implements OnInit {
 
     @ViewChild('inputFile') inputFile: ElementRef;
-    uploader: FileUploader = new FileUploader({url: 'http://localhost:3000/upload', itemAlias: 'photo'});
+    uploader: FileUploader = new FileUploader({url: `${SERVER_URL}/upload`, itemAlias: 'photo'});
     userStorieRestI: UserStorieRestI;
 
     constructor(private usService: UsService, private ar: ActivatedRoute, private router: Router) { }

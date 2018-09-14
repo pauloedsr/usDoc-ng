@@ -10,7 +10,8 @@ import {
     MatMenuModule,
     MatSidenavModule,
     MatToolbarModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatProgressBarModule
 } from '@angular/material';
 import { TranslateModule } from '@ngx-translate/core';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -31,6 +32,7 @@ import { NavComponent } from './nav/nav.component';
         MatMenuModule,
         MatListModule,
         MatExpansionModule,
+        MatProgressBarModule,
         TranslateModule
     ],
     declarations: [LayoutComponent, NavComponent, TopnavComponent, SidebarComponent, BarraTarefasComponent, ItemBarraComponent]
